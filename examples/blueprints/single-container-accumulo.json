@@ -294,15 +294,15 @@
           "audit_db_password" : "dev",		  
           "db_root_user" : "rangeradmin",
 	  "db_root_password" : "dev",
-          "DB_FLAVOR" : "POSTGRES",
+          "DB_FLAVOR" : "MYSQL",
           "db_name" : "ranger",
           "db_user" : "rangeradmin",
           "db_password" : "dev",		  
-          "SQL_CONNECTOR_JAR" : "/usr/share/java/postgresql-jdbc.jar",
-          "db_host" : "postgres.dev",
+          "SQL_CONNECTOR_JAR" : "/usr/share/java/mysql-connector-java.jar",
+          "db_host" : "mysql.dev",
           "audit_db_name" : "rangeradmin",
           "audit_db_password" : "dev",
-          "ranger_jdbc_connection_url" : "jdbc:postgresql://postgres.dev:5432"
+          "ranger_jdbc_connection_url" : "jdbc:mysql://mysql.dev:3306"
           
         }
       }
@@ -322,7 +322,7 @@
           "ranger-atlas-plugin-enabled" : "No",
           "create_db_dbuser" : "false",
           "ranger_admin_password": "admin",
-	  "ranger_privelege_user_jdbc_url": "jdbc:postgresql://postgres.dev:5432/postgres"
+	  "ranger_privelege_user_jdbc_url": "jdbc:mysql://mysql.dev:3306"
         }
       }
     },
@@ -330,9 +330,8 @@
       "ranger-admin-site" : {
         "properties_attributes" : { },
         "properties" : {
-	  "ranger.jpa.jdbc.driver": "org.postgresql.Driver",
-          "ranger.jpa.jdbc.url": "jdbc:postgresql://postgres.dev:5432/ranger",
           "xasecure.audit.destination.solr": "true",
+          "ranger.jpa.jdbc.url": "jdbc:mysql://mysql.dev:3306/ranger",
 	  "ranger.audit.solr.zookeepers": "%HOSTGROUP::host_group_1%:2181/infra-solr"
         }
       }
@@ -343,8 +342,8 @@
       "components" : [
         {
           "name" : "ZOOKEEPER_CLIENT"
-        },        
-	{
+        },
+        {
           "name" : "RANGER_USERSYNC"
         },
         {

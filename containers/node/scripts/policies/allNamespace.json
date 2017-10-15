@@ -1,0 +1,1 @@
+{"policyType":"0","name":"all - namespace","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"namespace":{"values":["*"],"isRecursive":false,"isExcludes":false}},"policyItems":[{"users":["accumulo"],"accesses":[{"type":"all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"dev_accumulo"}

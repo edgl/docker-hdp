@@ -1,0 +1,33 @@
+  <configuration>
+    
+    <property>
+      <name>ranger.plugin.accumulo.policy.cache.dir</name>
+      <value>/etc/ranger/dev_accumulo/policycache</value>
+    </property>
+    
+    <property>
+      <name>ranger.plugin.accumulo.policy.pollIntervalMs</name>
+      <value>30000</value>
+    </property>
+    
+    <property>
+      <name>ranger.plugin.accumulo.policy.rest.ssl.config.file</name>
+      <value>/usr/hdp/current/accumulo-server/conf/ranger-policymgr-ssl.xml</value>
+    </property>
+    
+    <property>
+      <name>ranger.plugin.accumulo.policy.rest.url</name>
+      <value>http://dn0.dev:6080</value>
+    </property>
+    
+    <property>
+      <name>ranger.plugin.accumulo.policy.source.impl</name>
+      <value>org.apache.ranger.admin.client.RangerAdminRESTClient</value>
+    </property>
+    
+    <property>
+      <name>ranger.plugin.accumulo.service.name</name>
+      <value>dev_accumulo</value>
+    </property>
+    
+  </configuration>

@@ -1,0 +1,535 @@
+{
+  "serviceName": "dev_accumulo",
+  "serviceId": 10,
+  "policyVersion": 21,
+  "policyUpdateTime": "20171014-15:09:11.000--0400",
+  "policies": [
+    {
+      "service": "dev_accumulo",
+      "name": "all - namespace",
+      "policyType": 0,
+      "description": "Policy for all - namespace",
+      "isAuditEnabled": true,
+      "resources": {
+        "namespace": {
+          "values": [
+            "*"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "all",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "accumulo"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 40,
+      "isEnabled": true,
+      "version": 2
+    },
+    {
+      "service": "dev_accumulo",
+      "name": "all - system",
+      "policyType": 0,
+      "description": "Policy for all - system",
+      "isAuditEnabled": true,
+      "resources": {
+        "system": {
+          "values": [
+            "*"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "all",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "accumulo",
+            "knox"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 41,
+      "isEnabled": true,
+      "version": 5
+    },
+    {
+      "service": "dev_accumulo",
+      "name": "what and ok authz",
+      "policyType": 0,
+      "description": "Policy for all - authorization",
+      "isAuditEnabled": true,
+      "resources": {
+        "authorization": {
+          "values": [
+            "what",
+            "ok"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "AUTH",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "accumulo"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 42,
+      "isEnabled": true,
+      "version": 3
+    },
+    {
+      "service": "dev_accumulo",
+      "name": "all - table",
+      "policyType": 0,
+      "description": "Policy for all - table",
+      "isAuditEnabled": true,
+      "resources": {
+        "table": {
+          "values": [
+            "*"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "all",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "accumulo"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 43,
+      "isEnabled": true,
+      "version": 2
+    },
+    {
+      "service": "dev_accumulo",
+      "name": "only ok authz",
+      "policyType": 0,
+      "description": "",
+      "isAuditEnabled": true,
+      "resources": {
+        "authorization": {
+          "values": [
+            "ok"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "AUTH",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "knox"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 44,
+      "isEnabled": true,
+      "version": 1
+    },
+    {
+      "service": "dev_accumulo",
+      "name": "namespace toasted",
+      "policyType": 0,
+      "description": "",
+      "isAuditEnabled": true,
+      "resources": {
+        "namespace": {
+          "values": [
+            "toasted"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "all",
+              "isAllowed": true
+            }
+          ],
+          "users": [
+            "knox"
+          ],
+          "groups": [],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 45,
+      "isEnabled": true,
+      "version": 1
+    },
+    {
+      "service": "dev_accumulo",
+      "name": "some tables",
+      "policyType": 0,
+      "description": "",
+      "isAuditEnabled": true,
+      "resources": {
+        "table": {
+          "values": [
+            "stuff.things"
+          ],
+          "isExcludes": false,
+          "isRecursive": false
+        }
+      },
+      "policyItems": [
+        {
+          "accesses": [
+            {
+              "type": "all",
+              "isAllowed": true
+            }
+          ],
+          "users": [],
+          "groups": [
+            "knoxy"
+          ],
+          "conditions": [],
+          "delegateAdmin": false
+        }
+      ],
+      "denyPolicyItems": [],
+      "allowExceptions": [],
+      "denyExceptions": [],
+      "dataMaskPolicyItems": [],
+      "rowFilterPolicyItems": [],
+      "id": 47,
+      "isEnabled": true,
+      "version": 2
+    }
+  ],
+  "serviceDef": {
+    "name": "accumulo",
+    "implClass": "org.apache.ranger.services.accumulo.RangerServiceAccumulo",
+    "label": "Accumulo",
+    "description": "Accumulo",
+    "options": {
+      "enableDenyAndExceptionsInPolicies": "false"
+    },
+    "configs": [],
+    "resources": [
+      {
+        "itemId": 1,
+        "name": "system",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": false,
+        "excludesSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "true",
+          "ignoreCase": "false"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "System",
+        "description": "System"
+      },
+      {
+        "itemId": 2,
+        "name": "table",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": false,
+        "excludesSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "true",
+          "ignoreCase": "false"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Table",
+        "description": "Table"
+      },
+      {
+        "itemId": 3,
+        "name": "namespace",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": true,
+        "recursiveSupported": false,
+        "excludesSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "true",
+          "ignoreCase": "false"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Namespace",
+        "description": "Namespace"
+      },
+      {
+        "itemId": 4,
+        "name": "authorization",
+        "type": "string",
+        "level": 10,
+        "mandatory": true,
+        "lookupSupported": false,
+        "recursiveSupported": false,
+        "excludesSupported": true,
+        "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
+        "matcherOptions": {
+          "wildCard": "false",
+          "ignoreCase": "false"
+        },
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "Authorizations",
+        "description": "Authorizations"
+      }
+    ],
+    "accessTypes": [
+      {
+        "itemId": 1,
+        "name": "GRANT",
+        "label": "Grant",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 2,
+        "name": "CREATE_TABLE",
+        "label": "Create Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 3,
+        "name": "DROP_TABLE",
+        "label": "Drop Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 4,
+        "name": "ALTER_TABLE",
+        "label": "Alter Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 5,
+        "name": "CREATE_USER",
+        "label": "Create User",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 6,
+        "name": "DROP_USER",
+        "label": "Drop User",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 7,
+        "name": "ALTER_USER",
+        "label": "Alter User",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 8,
+        "name": "SYSTEM",
+        "label": "System",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 9,
+        "name": "CREATE_NAMESPACE",
+        "label": "Create Namespace",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 10,
+        "name": "DROP_NAMESPACE",
+        "label": "Drop Namespace",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 11,
+        "name": "ALTER_NAMESPACE",
+        "label": "Alter Namespace",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 12,
+        "name": "OBTAIN_DELEGATION_TOKEN",
+        "label": "Obtain Delegation Token",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 13,
+        "name": "READ",
+        "label": "Read Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 14,
+        "name": "WRITE",
+        "label": "Write to Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 15,
+        "name": "BULK_IMPORT",
+        "label": "Bulk Import to Table",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 16,
+        "name": "AUTH",
+        "label": "Authorization access",
+        "impliedGrants": []
+      },
+      {
+        "itemId": 17,
+        "name": "all",
+        "label": "All",
+        "impliedGrants": [
+          "GRANT",
+          "CREATE_TABLE",
+          "DROP_TABLE",
+          "ALTER_TABLE",
+          "CREATE_USER",
+          "DROP_USER",
+          "ALTER_USER",
+          "SYSTEM",
+          "CREATE_NAMESPACE",
+          "DROP_NAMESPACE",
+          "ALTER_NAMESPACE",
+          "OBTAIN_DELEGATION_TOKEN",
+          "READ",
+          "WRITE",
+          "BULK_IMPORT"
+        ]
+      }
+    ],
+    "policyConditions": [
+      {
+        "itemId": 1,
+        "name": "ip-range",
+        "evaluator": "org.apache.ranger.plugin.conditionevaluator.RangerIpMatcher",
+        "evaluatorOptions": {},
+        "validationRegEx": "",
+        "validationMessage": "",
+        "uiHint": "",
+        "label": "IP Address Range",
+        "description": "IP Address Range"
+      }
+    ],
+    "contextEnrichers": [],
+    "enums": [],
+    "dataMaskDef": {
+      "maskTypes": [],
+      "accessTypes": [],
+      "resources": []
+    },
+    "rowFilterDef": {
+      "accessTypes": [],
+      "resources": []
+    },
+    "id": 102,
+    "guid": "84b481b5-f23b-4f71-b8b6-ab3397714abc",
+    "isEnabled": true,
+    "createdBy": "Admin",
+    "updatedBy": "Admin",
+    "createTime": "20170927-17:10:54.000--0400",
+    "updateTime": "20170927-17:10:54.000--0400",
+    "version": 1
+  },
+  "auditMode": "audit-default"
+}

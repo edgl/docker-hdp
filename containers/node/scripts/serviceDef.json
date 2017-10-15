@@ -1,0 +1,1 @@
+{"name":"dev_accumulo","description":"Accumulo service","isEnabled":true,"tagService":"","configs":{"policy.download.auth.users":"accumulo"},"type":"accumulo"}

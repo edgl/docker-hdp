@@ -1,0 +1,33 @@
+  <configuration>
+    
+    <property>
+      <name>xasecure.policymgr.clientssl.keystore</name>
+      <value>/usr/hdp/current/accumulo-server/conf/ranger-plugin-keystore.jks</value>
+    </property>
+    
+    <property>
+      <name>xasecure.policymgr.clientssl.keystore.credential.file</name>
+      <value>jceks://file/etc/ranger/dev_accumulo/cred.jceks</value>
+    </property>
+    
+    <property>
+      <name>xasecure.policymgr.clientssl.keystore.password</name>
+      <value>crypted</value>
+    </property>
+    
+    <property>
+      <name>xasecure.policymgr.clientssl.truststore</name>
+      <value>/usr/hdp/current/accumulo-server/conf/ranger-plugin-truststore.jks</value>
+    </property>
+    
+    <property>
+      <name>xasecure.policymgr.clientssl.truststore.credential.file</name>
+      <value>jceks://file/etc/ranger/dev_accumulo/cred.jceks</value>
+    </property>
+    
+    <property>
+      <name>xasecure.policymgr.clientssl.truststore.password</name>
+      <value>crypted</value>
+    </property>
+    
+  </configuration>

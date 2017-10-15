@@ -206,7 +206,9 @@
     {
       "ranger-hdfs-audit" : {
         "properties_attributes" : { },
-        "properties" : { }
+        "properties" : {
+          "xasecure.audit.destination.solr.zookeepers" : "{{zookeeper_quorum}}/infra-solr"
+        }
       }
     },
     {
@@ -349,6 +351,18 @@
 	  "admin_server_host": "kdc.dev"
         }
       }
+    },
+    {
+      "accumulo-site" : {
+        "properties_attributes" : { },
+      "properties" : {
+        "general.classpaths" : "\n$ACCUMULO_HOME/lib/accumulo-server.jar,\n$ACCUMULO_HOME/lib/accumulo-core.jar,\n$ACCUMULO_HOME/lib/accumulo-start.jar,\n$ACCUMULO_HOME/lib/accumulo-fate.jar,\n$ACCUMULO_HOME/lib/accumulo-proxy.jar,\n$ACCUMULO_HOME/lib/[^.].*.jar,\n$ZOOKEEPER_HOME/zookeeper[^.].*.jar,\n$HADOOP_CONF_DIR,\n/usr/hdp/current/hadoop-client/[^.].*.jar,\n/usr/hdp/current/hadoop-client/lib/(?!slf4j)[^.].*.jar,\n/usr/hdp/current/hadoop-hdfs-client/[^.].*.jar,\n/usr/hdp/current/hadoop-mapreduce-client/[^.].*.jar,\n/usr/hdp/current/hadoop-yarn-client/[^.].*.jar,\n/usr/hdp/current/hadoop-yarn-client/lib/jersey.*.jar,\n/usr/hdp/current/hive-client/lib/hive-accumulo-handler.jar,\n/etc/accumulo/conf,\n/usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl/[^.].*.jar,",
+        "instance.security.authenticator" : "org.apache.ranger.authorization.accumulo.authorizer.RangerKerberosAuthenticator",
+        "instance.security.authorizor" : "org.apache.ranger.authorization.accumulo.authorizer.RangerAccumuloAuthorizer",
+        "instance.security.permissionHandler" : "org.apache.ranger.authorization.accumulo.authorizer.RangerAccumuloPermissionHandler"
+      }
+ 
+      }
     }
   ],
   "host_groups" : [
@@ -383,6 +397,24 @@
         },
         {
           "name": "INFRA_SOLR_CLIENT"
+        },
+        {
+          "name" : "ACCUMULO_CLIENT"
+        },
+        {
+          "name" : "ACCUMULO_GC"
+        },
+        {
+          "name" : "ACCUMULO_MASTER"
+        },
+        {
+          "name" : "ACCUMULO_MONITOR"
+        },
+        {
+          "name" : "ACCUMULO_TRACER"
+        },
+        {
+          "name" : "ACCUMULO_TSERVER"
         }
       ],
       "configurations" : [ ],

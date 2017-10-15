@@ -28,5 +28,6 @@ RUN mkdir -p /etc/ranger/dev_accumulo/policycache && \
 mv /etc/accumulo/conf/master_dev_accumulo.json /etc/ranger/dev_accumulo/policycache/ && \
 mv /etc/accumulo/conf/tserver_dev_accumulo.json /etc/ranger/dev_accumulo/policycache/ && \
 chown -R accumulo:hadoop /etc/ranger/dev_accumulo
+ADD scripts/addUsers.sh /root/
 ADD scripts/start.sh /start.sh
 CMD /start.sh

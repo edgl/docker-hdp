@@ -96,7 +96,7 @@
           }
         },
         "properties" : {
-          "fs.defaultFS" : "hdfs://%HOSTGROUP::host_group_1%:8020",
+          "fs.defaultFS" : "hdfs://dn0.dev:8020",
           "ipc.server.tcpnodelay" : "true",
           "mapreduce.jobtracker.webinterface.trusted" : "false",
           "hadoop.security.auth_to_local" : "DEFAULT",
@@ -109,7 +109,7 @@
           "ipc.client.connection.maxidletime" : "30000",
           "hadoop.proxyuser.hcat.groups" : "*",
           "hadoop.proxyuser.livy.groups" : "*",
-          "hadoop.proxyuser.hive.hosts" : "%HOSTGROUP::host_group_1%",
+          "hadoop.proxyuser.hive.hosts" : "dn0.dev",
           "hadoop.proxyuser.root.hosts" : "ambari-server.dev",
           "ha.failover-controller.active-standby-elector.zk.op.retries" : "120",
           "hadoop.security.authentication" : "simple",
@@ -117,11 +117,12 @@
           "ipc.client.connect.max.retries" : "50",
           "io.file.buffer.size" : "131072",
           "hadoop.proxyuser.livy.hosts" : "*",
-          "hadoop.proxyuser.hcat.hosts" : "%HOSTGROUP::host_group_1%",
+          "hadoop.proxyuser.hcat.hosts" : "dn0.dev",
           "net.topology.script.file.name" : "/etc/hadoop/conf/topology_script.py",
           "io.compression.codecs" : "org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.SnappyCodec",
           "hadoop.proxyuser.hive.groups" : "*",
-          "io.serializations" : "org.apache.hadoop.io.serializer.WritableSerialization"
+          "io.serializations" : "org.apache.hadoop.io.serializer.WritableSerialization",
+          "hadoop.user.group.static.mapping.overrides": "doctorbob=doctor;tom=reception;jane=billing"
         }
       }
     },
@@ -144,8 +145,8 @@
           "dfs.namenode.avoid.read.stale.datanode" : "true",
           "dfs.journalnode.http-address" : "0.0.0.0:8480",
           "nfs.file.dump.dir" : "/tmp/.hdfs-nfs",
-          "dfs.namenode.rpc-address" : "%HOSTGROUP::host_group_1%:8020",
-          "dfs.namenode.https-address" : "%HOSTGROUP::host_group_1%:50470",
+          "dfs.namenode.rpc-address" : "dn0.dev:8020",
+          "dfs.namenode.https-address" : "dn0.dev:50470",
           "dfs.encrypt.data.transfer.cipher.suites" : "AES/CTR/NoPadding",
           "dfs.client.read.shortcircuit.streams.cache.size" : "4096",
           "dfs.hosts.exclude" : "/etc/hadoop/conf/dfs.exclude",
@@ -167,7 +168,7 @@
           "dfs.replication.max" : "50",
           "dfs.client.read.shortcircuit" : "true",
           "dfs.webhdfs.enabled" : "true",
-          "dfs.namenode.http-address" : "%HOSTGROUP::host_group_1%:50070",
+          "dfs.namenode.http-address" : "dn0.dev:50070",
           "dfs.namenode.name.dir" : "/hadoop/hdfs/namenode",
           "dfs.namenode.avoid.write.stale.datanode" : "true",
           "dfs.datanode.https.address" : "0.0.0.0:50475",
@@ -186,7 +187,7 @@
           "dfs.namenode.write.stale.datanode.ratio" : "1.0f",
           "dfs.namenode.name.dir.restore" : "true",
           "dfs.heartbeat.interval" : "3",
-          "dfs.namenode.secondary.http-address" : "%HOSTGROUP::host_group_1%:50090",
+          "dfs.namenode.secondary.http-address" : "dn0.dev:50090",
           "dfs.namenode.checkpoint.txns" : "1000000",
           "dfs.journalnode.edits.dir" : "/hadoop/hdfs/journalnode",
           "dfs.support.append" : "true",

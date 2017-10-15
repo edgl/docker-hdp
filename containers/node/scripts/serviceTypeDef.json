@@ -89,7 +89,7 @@
         "excludesSupported": true,
         "matcher": "org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
         "matcherOptions": {
-          "wildCard": "false",
+          "wildCard": "true",
           "ignoreCase": "false"
         },
         "validationRegEx": "",

@@ -1,0 +1,1 @@
+{"policyType":"0","name":"phi","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"authorization":{"values":["phi"],"isRecursive":false,"isExcludes":false}},"policyItems":[{"users":["doctorbob"],"accesses":[{"type":"all","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"dev_accumulo"}

@@ -1,0 +1,1 @@
+{"policyType":"0","name":"Namespace - office","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"namespace":{"values":["office"],"isRecursive":false,"isExcludes":false}},"policyItems":[{"users":["doctorbob"],"accesses":[{"type":"READ","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"dev_accumulo"}

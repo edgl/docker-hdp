@@ -1,0 +1,1 @@
+{"policyType":"0","name":"maskedpii","isEnabled":true,"isAuditEnabled":true,"description":"","resources":{"authorization":{"values":["maskedpii"],"isRecursive":false,"isExcludes":false}},"policyItems":[{"groups":["billing"],"accesses":[{"type":"AUTH","isAllowed":true}]}],"denyPolicyItems":[],"allowExceptions":[],"denyExceptions":[],"service":"dev_accumulo"}

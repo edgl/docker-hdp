@@ -70,8 +70,6 @@ services:
      - "50030:50030"
      # Solr
      - "8983:8983"
-     # Kerberos
-     - "88:88"
   kdc.dev:
     build: ../../../docker-kerberos/kdc-kadmin
     volumes:

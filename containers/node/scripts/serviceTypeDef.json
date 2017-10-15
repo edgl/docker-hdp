@@ -24,7 +24,7 @@
          "type":"string",
          "level":10,
          "mandatory":true,
-         "lookupSupported":true,
+         "lookupSupported":false,
          "recursiveSupported":false,
          "excludesSupported":true,
          "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
@@ -44,7 +44,7 @@
          "type":"string",
          "level":10,
          "mandatory":true,
-         "lookupSupported":true,
+         "lookupSupported":false,
          "recursiveSupported":false,
          "excludesSupported":true,
          "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
@@ -64,7 +64,7 @@
          "type":"string",
          "level":10,
          "mandatory":true,
-         "lookupSupported":true,
+         "lookupSupported":false,
          "recursiveSupported":false,
          "excludesSupported":true,
          "matcher":"org.apache.ranger.plugin.resourcematcher.RangerDefaultResourceMatcher",
@@ -246,7 +246,8 @@
             "OBTAIN_DELEGATION_TOKEN",
             "READ",
             "WRITE",
-            "BULK_IMPORT"
+            "BULK_IMPORT",
+            "AUTH"
          ]
       }
    ],

@@ -302,8 +302,8 @@
           "db_host" : "mysql.dev",
           "audit_db_name" : "rangeradmin",
           "audit_db_password" : "dev",
-          "ranger_jdbc_connection_url" : "jdbc:mysql://mysql.dev:3306"
-          
+          "ranger_jdbc_connection_url" : "jdbc:mysql://mysql.dev:3306",
+	  "policymgr_external_url": "http://{{ranger_host}}:6080"
         }
       }
     },
@@ -332,7 +332,21 @@
         "properties" : {
           "xasecure.audit.destination.solr": "true",
           "ranger.jpa.jdbc.url": "jdbc:mysql://mysql.dev:3306/ranger",
-	  "ranger.audit.solr.zookeepers": "%HOSTGROUP::host_group_1%:2181/infra-solr"
+	  "ranger.audit.solr.zookeepers": "{{zookeeper_quorum}}/infra-solr",
+	  "ranger.service.host": "{{ranger_host}}",
+	  "ranger.service.http.port": "6080",
+	  "ranger.service.http.enabled": true
+        }
+      }
+    },
+    {
+      "kerberos-env" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "realm": "EXAMPLE.COM",
+          "kdc_type": "mit-kdc",
+	  "kdc_hosts": "kdc.dev",
+	  "admin_server_host": "kdc.dev"
         }
       }
     }

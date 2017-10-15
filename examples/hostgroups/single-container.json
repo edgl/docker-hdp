@@ -1,5 +1,16 @@
 { "blueprint":"single-container",
 "default_password" : "dev",
+"credentials" : [
+ {
+	"alias" : "kdc.admin.credential",
+	"principal" : "admin/admin@EXAMPLE.COM",
+	"key" : "password",
+	"type" : "TEMPORARY"
+ }
+],
+"security" : {
+"type" : "KERBEROS"
+},
 "configurations" : [
   {
     "hive-site" : {

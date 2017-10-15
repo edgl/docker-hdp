@@ -11,4 +11,5 @@ rm -f mysql-connector-java-5.1.44.tar.gz
 RUN ambari-server setup --database=mysql --databasehost=mysql.dev --databaseport=3306 --databasename=ambari --databaseusername=ambari --databasepassword=dev --silent
 RUN ambari-server setup --jdbc-db mysql --jdbc-driver=/usr/share/java/mysql-connector-java.jar
 ADD scripts/start.sh /start.sh
+ADD krb5.conf /etc/krb5.conf
 CMD /start.sh

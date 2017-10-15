@@ -30,4 +30,5 @@ mv /etc/accumulo/conf/tserver_dev_accumulo.json /etc/ranger/dev_accumulo/policyc
 chown -R accumulo:hadoop /etc/ranger/dev_accumulo
 ADD scripts/addUsers.sh /root/
 ADD scripts/start.sh /start.sh
+RUN ln -s /etc/hadoop/conf/core-site.xml /etc/accumulo/conf/core-site.xml
 CMD /start.sh

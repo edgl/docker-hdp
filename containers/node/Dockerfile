@@ -11,7 +11,7 @@ RUN yum install -y zookeeper*
 RUN yum install -y ranger*
 RUN yum install -y accumulo*
 RUN yum install -y superset*
-
+RUN yum install -y ambari-infra-solr*
 RUN cp -r /usr/hdp/current/hadoop-client/lib/ranger-hdfs-plugin-impl /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl
 RUN rm -f /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl/ranger-hdfs-plugin*
 
@@ -30,5 +30,8 @@ mv /etc/accumulo/conf/tserver_dev_accumulo.json /etc/ranger/dev_accumulo/policyc
 chown -R accumulo:hadoop /etc/ranger/dev_accumulo
 ADD scripts/addUsers.sh /root/
 ADD scripts/start.sh /start.sh
-RUN ln -s /etc/hadoop/conf/core-site.xml /etc/accumulo/conf/core-site.xml
+RUN ln -s /etc/hadoop/conf/core-site.xml /etc/accumulo/conf/core-site.xml && \
+mkdir /var/lib/accumulo && \
+chown accumulo:hadoop /var/lib/accumulo
+
 CMD /start.sh

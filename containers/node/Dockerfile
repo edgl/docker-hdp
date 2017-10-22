@@ -15,7 +15,6 @@ RUN yum install -y ambari-infra-solr*
 RUN cp -r /usr/hdp/current/hadoop-client/lib/ranger-hdfs-plugin-impl /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl
 RUN rm -f /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl/ranger-hdfs-plugin*
 
-ADD ranger-accumulo-plugin-0.7.0-SNAPSHOT.jar /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl/
 RUN wget https://dev.mysql.com/get/Downloads/Connector-J/mysql-connector-java-5.1.44.tar.gz && \
 tar -xzf mysql-connector-java-5.1.44.tar.gz mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar && \
 mkdir -p /usr/share/java && \
@@ -34,4 +33,5 @@ RUN ln -s /etc/hadoop/conf/core-site.xml /etc/accumulo/conf/core-site.xml && \
 mkdir /var/lib/accumulo && \
 chown accumulo:hadoop /var/lib/accumulo
 
+ADD ranger-accumulo-plugin-0.7.0-SNAPSHOT.jar /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl/
 CMD /start.sh

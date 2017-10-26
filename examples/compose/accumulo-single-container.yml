@@ -70,6 +70,12 @@ services:
      - "50030:50030"
      # Solr
      - "8983:8983"
+     # Zeppelin
+     - "9995:9995"
+     # Livy
+     - "8999:8999"
+     # YARN
+     - "8088:8088"
   kdc.dev:
     build: ../../../docker-kerberos/kdc-kadmin
     volumes:

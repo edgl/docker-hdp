@@ -12,6 +12,7 @@ RUN yum install -y ranger*
 RUN yum install -y accumulo*
 RUN yum install -y superset*
 RUN yum install -y ambari-infra-solr*
+RUN yum install -y spark* livy* hive* zeppelin*
 RUN cp -r /usr/hdp/current/hadoop-client/lib/ranger-hdfs-plugin-impl /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl
 RUN rm -f /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl/ranger-hdfs-plugin*
 

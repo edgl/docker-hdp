@@ -12,6 +12,11 @@ RUN yum install -y ranger*
 RUN yum install -y accumulo*
 RUN yum install -y superset*
 RUN yum install -y ambari-infra-solr*
+RUN yum install -y knox*
+RUN yum install -y hbase*
+RUN yum install -y kafka_*
+RUN yum install -y atlas-metadata*
+
 RUN cp -r /usr/hdp/current/hadoop-client/lib/ranger-hdfs-plugin-impl /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl
 RUN rm -f /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl/ranger-hdfs-plugin*
 
@@ -32,6 +37,7 @@ ADD scripts/start.sh /start.sh
 RUN ln -s /etc/hadoop/conf/core-site.xml /etc/accumulo/conf/core-site.xml && \
 mkdir /var/lib/accumulo && \
 chown accumulo:hadoop /var/lib/accumulo
+
 
 ADD ranger-accumulo-plugin-0.7.0-SNAPSHOT.jar /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl/
 CMD /start.sh

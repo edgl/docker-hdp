@@ -139,7 +139,7 @@
           }
         },
         "properties" : {
-          "dfs.replication" : "3",
+          "dfs.replication" : "1",
           "dfs.namenode.audit.log.async" : "true",
           "dfs.namenode.checkpoint.dir" : "/hadoop/hdfs/namesecondary",
           "dfs.namenode.avoid.read.stale.datanode" : "true",
@@ -158,7 +158,7 @@
           "dfs.content-summary.limit" : "5000",
           "dfs.http.policy" : "HTTP_ONLY",
           "dfs.journalnode.https-address" : "0.0.0.0:8481",
-          "dfs.datanode.du.reserved" : "7922094592",
+          "dfs.datanode.du.reserved" : "4922094592",
           "dfs.domain.socket.path" : "/var/lib/hadoop-hdfs/dn_socket",
           "dfs.datanode.ipc.address" : "0.0.0.0:8010",
           "dfs.cluster.administrators" : " hdfs",
@@ -234,6 +234,21 @@
         }
       }
     },
+                {
+                        "ranger-hbase-security": {
+                                "properties_attributes": {},
+                                "properties": {
+                                        "ranger.plugin.hbase.policy.rest.ssl.config.file": "/etc/hbase/conf/ranger-policymgr-ssl.xml",
+                                        "ranger.plugin.hbase.service.name": "{{repo_name}}",
+                                        "xasecure.hbase.update.xapolicies.on.grant.revoke": "true",
+                                        "ranger.plugin.hbase.policy.cache.dir": "/etc/ranger/{{repo_name}}/policycache",
+                                        "ranger.plugin.hbase.policy.source.impl": "org.apache.ranger.admin.client.RangerAdminRESTClient",
+                                        "ranger.plugin.hbase.policy.rest.url": "{{policymgr_mgr_url}}",
+                                        "ranger.plugin.hbase.policy.pollIntervalMs": "30000"
+                                }
+                        }
+                },
+
     {
       "ranger-hdfs-security" : {
         "properties_attributes" : { },
@@ -326,10 +341,10 @@
           "is_solrCloud_enabled" : "true",
           "ranger-hive-plugin-enabled" : "Yes",
           "xasecure.audit.destination.hdfs" : "false",	  
-          "ranger-hdfs-plugin-enabled" : "Yes",
+          "ranger-hdfs-plugin-enabled" : "No",
           "ranger-knox-plugin-enabled" : "No",
           "ranger-yarn-plugin-enabled" : "No",
-          "ranger-hbase-plugin-enabled" : "No",
+          "ranger-hbase-plugin-enabled" : "Yes",
           "ranger-kafka-plugin-enabled" : "No",
           "ranger-atlas-plugin-enabled" : "No",
           "create_db_dbuser" : "false",
@@ -425,6 +440,27 @@
         },
         {
           "name" : "ACCUMULO_TSERVER"
+        },
+        {
+          "name": "KNOX_GATEWAY"
+        },
+        {
+          "name": "HBASE_REGIONSERVER"
+        },
+        {
+          "name": "HBASE_CLIENT"
+        },
+        {
+          "name": "HBASE_MASTER"
+        },
+        {
+          "name": "KAFKA_BROKER"
+        },
+        {
+          "name": "ATLAS_SERVER"
+        },
+        {
+          "name": "ATLAS_CLIENT"
         }
       ],
       "configurations" : [ ],

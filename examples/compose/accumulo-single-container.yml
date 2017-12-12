@@ -79,6 +79,15 @@ services:
      - dev
     hostname: kdc
     domainname: dev
+  nifi:
+    build: ../../../docker-nifi
+    hostname: nifi
+    domainname: dev
+    image: nifi:krb
+    ports:
+     - "9080:8080"
+    networks:
+     - dev
 networks:
   dev:
     driver: bridge

@@ -45,6 +45,8 @@ services:
     ports:
      # Accumulo
      - "50095:50095"
+     # Atlas
+     - "21000:21000"
      # ZooKeeper
      - "2181:2181"
      # HDFS

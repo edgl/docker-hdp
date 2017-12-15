@@ -23,21 +23,39 @@
       }
     },
     {
-      "ranger-hdfs-policymgr-ssl" : {
+      "kafka-log4j" : {
         "properties_attributes" : { },
-        "properties" : { }
+        "properties" : {
+          "controller_log_maxbackupindex" : "20",
+          "controller_log_maxfilesize" : "256",
+          "kafka_log_maxfilesize" : "256",
+          "content" : "\n#\n#\n# Licensed to the Apache Software Foundation (ASF) under one\n# or more contributor license agreements.  See the NOTICE file\n# distributed with this work for additional information\n# regarding copyright ownership.  The ASF licenses this file\n# to you under the Apache License, Version 2.0 (the\n# \"License\"); you may not use this file except in compliance\n# with the License.  You may obtain a copy of the License at\n#\n#   http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing,\n# software distributed under the License is distributed on an\n# \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n# KIND, either express or implied.  See the License for the\n# specific language governing permissions and limitations\n# under the License.\n#\n#\n#\nkafka.logs.dir=logs\n\nlog4j.rootLogger=INFO, stdout\n\nlog4j.appender.stdout=org.apache.log4j.ConsoleAppender\nlog4j.appender.stdout.layout=org.apache.log4j.PatternLayout\nlog4j.appender.stdout.layout.ConversionPattern=[%d] %p %m (%c)%n\n\nlog4j.appender.kafkaAppender=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.kafkaAppender.DatePattern='.'yyyy-MM-dd-HH\nlog4j.appender.kafkaAppender.File=${kafka.logs.dir}/server.log\nlog4j.appender.kafkaAppender.layout=org.apache.log4j.PatternLayout\nlog4j.appender.kafkaAppender.layout.ConversionPattern=[%d] %p %m (%c)%n\nlog4j.appender.kafkaAppender.MaxFileSize = {{kafka_log_maxfilesize}}MB\nlog4j.appender.kafkaAppender.MaxBackupIndex = {{kafka_log_maxbackupindex}}\n\nlog4j.appender.stateChangeAppender=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.stateChangeAppender.DatePattern='.'yyyy-MM-dd-HH\nlog4j.appender.stateChangeAppender.File=${kafka.logs.dir}/state-change.log\nlog4j.appender.stateChangeAppender.layout=org.apache.log4j.PatternLayout\nlog4j.appender.stateChangeAppender.layout.ConversionPattern=[%d] %p %m (%c)%n\n\nlog4j.appender.requestAppender=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.requestAppender.DatePattern='.'yyyy-MM-dd-HH\nlog4j.appender.requestAppender.File=${kafka.logs.dir}/kafka-request.log\nlog4j.appender.requestAppender.layout=org.apache.log4j.PatternLayout\nlog4j.appender.requestAppender.layout.ConversionPattern=[%d] %p %m (%c)%n\n\nlog4j.appender.cleanerAppender=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.cleanerAppender.DatePattern='.'yyyy-MM-dd-HH\nlog4j.appender.cleanerAppender.File=${kafka.logs.dir}/log-cleaner.log\nlog4j.appender.cleanerAppender.layout=org.apache.log4j.PatternLayout\nlog4j.appender.cleanerAppender.layout.ConversionPattern=[%d] %p %m (%c)%n\n\nlog4j.appender.controllerAppender=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.controllerAppender.DatePattern='.'yyyy-MM-dd-HH\nlog4j.appender.controllerAppender.File=${kafka.logs.dir}/controller.log\nlog4j.appender.controllerAppender.layout=org.apache.log4j.PatternLayout\nlog4j.appender.controllerAppender.layout.ConversionPattern=[%d] %p %m (%c)%n\nlog4j.appender.controllerAppender.MaxFileSize = {{controller_log_maxfilesize}}MB\nlog4j.appender.controllerAppender.MaxBackupIndex = {{controller_log_maxbackupindex}}\n# Turn on all our debugging info\n#log4j.logger.kafka.producer.async.DefaultEventHandler=DEBUG, kafkaAppender\n#log4j.logger.kafka.client.ClientUtils=DEBUG, kafkaAppender\n#log4j.logger.kafka.perf=DEBUG, kafkaAppender\n#log4j.logger.kafka.perf.ProducerPerformance$ProducerThread=DEBUG, kafkaAppender\n#log4j.logger.org.I0Itec.zkclient.ZkClient=DEBUG\nlog4j.logger.kafka=INFO, kafkaAppender\nlog4j.logger.kafka.network.RequestChannel$=WARN, requestAppender\nlog4j.additivity.kafka.network.RequestChannel$=false\n\n#log4j.logger.kafka.network.Processor=TRACE, requestAppender\n#log4j.logger.kafka.server.KafkaApis=TRACE, requestAppender\n#log4j.additivity.kafka.server.KafkaApis=false\nlog4j.logger.kafka.request.logger=WARN, requestAppender\nlog4j.additivity.kafka.request.logger=false\n\nlog4j.logger.kafka.controller=TRACE, controllerAppender\nlog4j.additivity.kafka.controller=false\n\nlog4j.logger.kafka.log.LogCleaner=INFO, cleanerAppender\nlog4j.additivity.kafka.log.LogCleaner=false\n\nlog4j.logger.state.change.logger=TRACE, stateChangeAppender\nlog4j.additivity.state.change.logger=false\nlog4j.appender.rangerAppender=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.rangerAppender.DatePattern='.'yyyy-MM-dd-HH\nlog4j.appender.rangerAppender.File=${kafka.logs.dir}/ranger_kafka.log\nlog4j.appender.rangerAppender.layout=org.apache.log4j.PatternLayout\nlog4j.appender.rangerAppender.layout.ConversionPattern=%d{ISO8601} %p [%t] %C{6} (%F:%L) - %m%n\nlog4j.logger.org.apache.ranger=INFO, rangerAppender",
+          "kafka_log_maxbackupindex" : "20"
+        }
       }
     },
     {
-      "ranger-yarn-policymgr-ssl" : {
+      "hbase-log4j" : {
         "properties_attributes" : { },
-        "properties" : { }
+        "properties" : {
+          "hbase_log_maxbackupindex" : "20",
+          "hbase_security_log_maxfilesize" : "256",
+          "hbase_log_maxfilesize" : "256",
+          "hbase_security_log_maxbackupindex" : "20",
+          "content" : "\n# Licensed to the Apache Software Foundation (ASF) under one\n# or more contributor license agreements.  See the NOTICE file\n# distributed with this work for additional information\n# regarding copyright ownership.  The ASF licenses this file\n# to you under the Apache License, Version 2.0 (the\n# \"License\"); you may not use this file except in compliance\n# with the License.  You may obtain a copy of the License at\n#\n#     http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing, software\n# distributed under the License is distributed on an \"AS IS\" BASIS,\n# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.\n# See the License for the specific language governing permissions and\n# limitations under the License.\n\n\n# Define some default values that can be overridden by system properties\nhbase.root.logger=INFO,console\nhbase.security.logger=INFO,console\nhbase.log.dir=.\nhbase.log.file=hbase.log\n\n# Define the root logger to the system property \"hbase.root.logger\".\nlog4j.rootLogger=${hbase.root.logger}\n\n# Logging Threshold\nlog4j.threshold=ALL\n\n#\n# Daily Rolling File Appender\n#\nlog4j.appender.DRFA=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.DRFA.File=${hbase.log.dir}/${hbase.log.file}\n\n# Rollver at midnight\nlog4j.appender.DRFA.DatePattern=.yyyy-MM-dd\n\n# 30-day backup\n#log4j.appender.DRFA.MaxBackupIndex=30\nlog4j.appender.DRFA.layout=org.apache.log4j.PatternLayout\n\n# Pattern format: Date LogLevel LoggerName LogMessage\nlog4j.appender.DRFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n\n\n# Rolling File Appender properties\nhbase.log.maxfilesize={{hbase_log_maxfilesize}}MB\nhbase.log.maxbackupindex={{hbase_log_maxbackupindex}}\n\n# Rolling File Appender\nlog4j.appender.RFA=org.apache.log4j.RollingFileAppender\nlog4j.appender.RFA.File=${hbase.log.dir}/${hbase.log.file}\n\nlog4j.appender.RFA.MaxFileSize=${hbase.log.maxfilesize}\nlog4j.appender.RFA.MaxBackupIndex=${hbase.log.maxbackupindex}\n\nlog4j.appender.RFA.layout=org.apache.log4j.PatternLayout\nlog4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n\n\n#\n# Security audit appender\n#\nhbase.security.log.file=SecurityAuth.audit\nhbase.security.log.maxfilesize={{hbase_security_log_maxfilesize}}MB\nhbase.security.log.maxbackupindex={{hbase_security_log_maxbackupindex}}\nlog4j.appender.RFAS=org.apache.log4j.RollingFileAppender\nlog4j.appender.RFAS.File=${hbase.log.dir}/${hbase.security.log.file}\nlog4j.appender.RFAS.MaxFileSize=${hbase.security.log.maxfilesize}\nlog4j.appender.RFAS.MaxBackupIndex=${hbase.security.log.maxbackupindex}\nlog4j.appender.RFAS.layout=org.apache.log4j.PatternLayout\nlog4j.appender.RFAS.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\nlog4j.category.SecurityLogger=${hbase.security.logger}\nlog4j.additivity.SecurityLogger=false\n#log4j.logger.SecurityLogger.org.apache.hadoop.hbase.security.access.AccessController=TRACE\n\n#\n# Null Appender\n#\nlog4j.appender.NullAppender=org.apache.log4j.varia.NullAppender\n\n#\n# console\n# Add \"console\" to rootlogger above if you want to use this\n#\nlog4j.appender.console=org.apache.log4j.ConsoleAppender\nlog4j.appender.console.target=System.err\nlog4j.appender.console.layout=org.apache.log4j.PatternLayout\nlog4j.appender.console.layout.ConversionPattern=%d{ISO8601} %-5p [%t] %c{2}: %m%n\n\n# Custom Logging levels\n\nlog4j.logger.org.apache.zookeeper=INFO\n#log4j.logger.org.apache.hadoop.fs.FSNamesystem=DEBUG\nlog4j.logger.org.apache.hadoop.hbase=INFO\n# Make these two classes INFO-level. Make them DEBUG to see more zk debug.\nlog4j.logger.org.apache.hadoop.hbase.zookeeper.ZKUtil=INFO\nlog4j.logger.org.apache.hadoop.hbase.zookeeper.ZooKeeperWatcher=INFO\n#log4j.logger.org.apache.hadoop.dfs=DEBUG\n# Set this class to log INFO only otherwise its OTT\n# Enable this to get detailed connection error/retry logging.\n# log4j.logger.org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation=TRACE\n\n\n# Uncomment this line to enable tracing on _every_ RPC call (this can be a lot of output)\n#log4j.logger.org.apache.hadoop.ipc.HBaseServer.trace=DEBUG\n\n# Uncomment the below if you want to remove logging of client region caching'\n# and scan of .META. messages\n# log4j.logger.org.apache.hadoop.hbase.client.HConnectionManager$HConnectionImplementation=INFO\n# log4j.logger.org.apache.hadoop.hbase.client.MetaScanner=INFO"
+        }
       }
     },
     {
-      "ranger-hive-policymgr-ssl" : {
+      "hdfs-log4j" : {
         "properties_attributes" : { },
-        "properties" : { }
+        "properties" : {
+          "hadoop_security_log_max_backup_size" : "256",
+          "hadoop_security_log_number_of_backup_files" : "20",
+          "hadoop_log_number_of_backup_files" : "10",
+          "content" : "\n#\n# Licensed to the Apache Software Foundation (ASF) under one\n# or more contributor license agreements.  See the NOTICE file\n# distributed with this work for additional information\n# regarding copyright ownership.  The ASF licenses this file\n# to you under the Apache License, Version 2.0 (the\n# \"License\"); you may not use this file except in compliance\n# with the License.  You may obtain a copy of the License at\n#\n#  http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing,\n# software distributed under the License is distributed on an\n# \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n# KIND, either express or implied.  See the License for the\n# specific language governing permissions and limitations\n# under the License.\n#\n\n\n# Define some default values that can be overridden by system properties\n# To change daemon root logger use hadoop_root_logger in hadoop-env\nhadoop.root.logger=INFO,console\nhadoop.log.dir=.\nhadoop.log.file=hadoop.log\n\n\n# Define the root logger to the system property \"hadoop.root.logger\".\nlog4j.rootLogger=${hadoop.root.logger}, EventCounter\n\n# Logging Threshold\nlog4j.threshhold=ALL\n\n#\n# Daily Rolling File Appender\n#\n\nlog4j.appender.DRFA=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.DRFA.File=${hadoop.log.dir}/${hadoop.log.file}\n\n# Rollver at midnight\nlog4j.appender.DRFA.DatePattern=.yyyy-MM-dd\n\n# 30-day backup\n#log4j.appender.DRFA.MaxBackupIndex=30\nlog4j.appender.DRFA.layout=org.apache.log4j.PatternLayout\n\n# Pattern format: Date LogLevel LoggerName LogMessage\nlog4j.appender.DRFA.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\n# Debugging Pattern format\n#log4j.appender.DRFA.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n\n\n\n#\n# console\n# Add \"console\" to rootlogger above if you want to use this\n#\n\nlog4j.appender.console=org.apache.log4j.ConsoleAppender\nlog4j.appender.console.target=System.err\nlog4j.appender.console.layout=org.apache.log4j.PatternLayout\nlog4j.appender.console.layout.ConversionPattern=%d{yy/MM/dd HH:mm:ss} %p %c{2}: %m%n\n\n#\n# TaskLog Appender\n#\n\n#Default values\nhadoop.tasklog.taskid=null\nhadoop.tasklog.iscleanup=false\nhadoop.tasklog.noKeepSplits=4\nhadoop.tasklog.totalLogFileSize=100\nhadoop.tasklog.purgeLogSplits=true\nhadoop.tasklog.logsRetainHours=12\n\nlog4j.appender.TLA=org.apache.hadoop.mapred.TaskLogAppender\nlog4j.appender.TLA.taskId=${hadoop.tasklog.taskid}\nlog4j.appender.TLA.isCleanup=${hadoop.tasklog.iscleanup}\nlog4j.appender.TLA.totalLogFileSize=${hadoop.tasklog.totalLogFileSize}\n\nlog4j.appender.TLA.layout=org.apache.log4j.PatternLayout\nlog4j.appender.TLA.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\n\n#\n#Security audit appender\n#\nhadoop.security.logger=INFO,console\nhadoop.security.log.maxfilesize={{hadoop_security_log_max_backup_size}}MB\nhadoop.security.log.maxbackupindex={{hadoop_security_log_number_of_backup_files}}\nlog4j.category.SecurityLogger=${hadoop.security.logger}\nhadoop.security.log.file=SecurityAuth.audit\nlog4j.additivity.SecurityLogger=false\nlog4j.appender.DRFAS=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.DRFAS.File=${hadoop.log.dir}/${hadoop.security.log.file}\nlog4j.appender.DRFAS.layout=org.apache.log4j.PatternLayout\nlog4j.appender.DRFAS.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\nlog4j.appender.DRFAS.DatePattern=.yyyy-MM-dd\n\nlog4j.appender.RFAS=org.apache.log4j.RollingFileAppender\nlog4j.appender.RFAS.File=${hadoop.log.dir}/${hadoop.security.log.file}\nlog4j.appender.RFAS.layout=org.apache.log4j.PatternLayout\nlog4j.appender.RFAS.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\nlog4j.appender.RFAS.MaxFileSize=${hadoop.security.log.maxfilesize}\nlog4j.appender.RFAS.MaxBackupIndex=${hadoop.security.log.maxbackupindex}\n\n#\n# hdfs audit logging\n#\nhdfs.audit.logger=INFO,console\nlog4j.logger.org.apache.hadoop.hdfs.server.namenode.FSNamesystem.audit=${hdfs.audit.logger}\nlog4j.additivity.org.apache.hadoop.hdfs.server.namenode.FSNamesystem.audit=false\nlog4j.appender.DRFAAUDIT=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.DRFAAUDIT.File=${hadoop.log.dir}/hdfs-audit.log\nlog4j.appender.DRFAAUDIT.layout=org.apache.log4j.PatternLayout\nlog4j.appender.DRFAAUDIT.layout.ConversionPattern=%d{ISO8601} %p %c{2}: %m%n\nlog4j.appender.DRFAAUDIT.DatePattern=.yyyy-MM-dd\n\n#\n# NameNode metrics logging.\n# The default is to retain two namenode-metrics.log files up to 64MB each.\n#\nnamenode.metrics.logger=INFO,NullAppender\nlog4j.logger.NameNodeMetricsLog=${namenode.metrics.logger}\nlog4j.additivity.NameNodeMetricsLog=false\nlog4j.appender.NNMETRICSRFA=org.apache.log4j.RollingFileAppender\nlog4j.appender.NNMETRICSRFA.File=${hadoop.log.dir}/namenode-metrics.log\nlog4j.appender.NNMETRICSRFA.layout=org.apache.log4j.PatternLayout\nlog4j.appender.NNMETRICSRFA.layout.ConversionPattern=%d{ISO8601} %m%n\nlog4j.appender.NNMETRICSRFA.MaxBackupIndex=1\nlog4j.appender.NNMETRICSRFA.MaxFileSize=64MB\n\n#\n# mapred audit logging\n#\nmapred.audit.logger=INFO,console\nlog4j.logger.org.apache.hadoop.mapred.AuditLogger=${mapred.audit.logger}\nlog4j.additivity.org.apache.hadoop.mapred.AuditLogger=false\nlog4j.appender.MRAUDIT=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.MRAUDIT.File=${hadoop.log.dir}/mapred-audit.log\nlog4j.appender.MRAUDIT.layout=org.apache.log4j.PatternLayout\nlog4j.appender.MRAUDIT.layout.ConversionPattern=%d{ISO8601} %p %c{2}: %m%n\nlog4j.appender.MRAUDIT.DatePattern=.yyyy-MM-dd\n\n#\n# Rolling File Appender\n#\n\nlog4j.appender.RFA=org.apache.log4j.RollingFileAppender\nlog4j.appender.RFA.File=${hadoop.log.dir}/${hadoop.log.file}\n\n# Logfile size and and 30-day backups\nlog4j.appender.RFA.MaxFileSize={{hadoop_log_max_backup_size}}MB\nlog4j.appender.RFA.MaxBackupIndex={{hadoop_log_number_of_backup_files}}\n\nlog4j.appender.RFA.layout=org.apache.log4j.PatternLayout\nlog4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} - %m%n\nlog4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n\n\n\n# Custom Logging levels\n\nhadoop.metrics.log.level=INFO\n#log4j.logger.org.apache.hadoop.mapred.JobTracker=DEBUG\n#log4j.logger.org.apache.hadoop.mapred.TaskTracker=DEBUG\n#log4j.logger.org.apache.hadoop.fs.FSNamesystem=DEBUG\nlog4j.logger.org.apache.hadoop.metrics2=${hadoop.metrics.log.level}\n\n# Jets3t library\nlog4j.logger.org.jets3t.service.impl.rest.httpclient.RestS3Service=ERROR\n\n#\n# Null Appender\n# Trap security logger on the hadoop client side\n#\nlog4j.appender.NullAppender=org.apache.log4j.varia.NullAppender\n\n#\n# Event Counter Appender\n# Sends counts of logging messages at different severity levels to Hadoop Metrics.\n#\nlog4j.appender.EventCounter=org.apache.hadoop.log.metrics.EventCounter\n\n# Removes \"deprecated\" messages\nlog4j.logger.org.apache.hadoop.conf.Configuration.deprecation=WARN\n\n#\n# HDFS block state change log from block manager\n#\n# Uncomment the following to suppress normal block state change\n# messages from BlockManager in NameNode.\n#log4j.logger.BlockStateChange=WARN",
+          "hadoop_log_max_backup_size" : "256"
+        }
       }
     },
     {
@@ -50,18 +68,6 @@
           "ssl.server.keystore.location" : "/etc/security/serverKeys/keystore.jks",
           "ssl.server.keystore.type" : "jks"
         }
-      }
-    },
-    {
-      "ranger-hive-plugin-properties" : {
-        "properties_attributes" : { },
-        "properties" : { }
-      }
-    },
-    {
-      "ranger-yarn-security" : {
-        "properties_attributes" : { },
-        "properties" : { }
       }
     },
     {
@@ -80,12 +86,6 @@
           "security.refresh.policy.protocol.acl" : "hadoop",
           "security.namenode.protocol.acl" : "*"
         }
-      }
-    },
-    {
-      "ranger-yarn-audit" : {
-        "properties_attributes" : { },
-        "properties" : { }
       }
     },
     {
@@ -135,6 +135,50 @@
       }
     },
     {
+      "ranger-kafka-audit" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "xasecure.audit.is.enabled" : "true",
+          "xasecure.audit.destination.hdfs" : "false",
+          "xasecure.audit.destination.solr" : "true",
+          "xasecure.audit.destination.solr.zookeepers" : "dn0.dev:2181/infra-solr"
+        }
+      }
+    },
+    {
+      "ranger-hdfs-audit" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "xasecure.audit.is.enabled" : "true",
+          "xasecure.audit.destination.hdfs" : "false",
+          "xasecure.audit.destination.solr" : "true",
+          "xasecure.audit.destination.solr.zookeepers" : "dn0.dev:2181/infra-solr"
+        }
+      }
+    },
+    {
+      "ranger-atlas-audit" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "xasecure.audit.is.enabled" : "true",
+          "xasecure.audit.destination.hdfs" : "false",
+          "xasecure.audit.destination.solr" : "true",
+          "xasecure.audit.destination.solr.zookeepers" : "dn0.dev:2181/infra-solr"
+        }
+      }
+    },
+    {
+      "ranger-hbase-audit" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "xasecure.audit.is.enabled" : "true",
+          "xasecure.audit.destination.hdfs" : "false",
+          "xasecure.audit.destination.solr" : "true",
+          "xasecure.audit.destination.solr.zookeepers" : "dn0.dev:2181/infra-solr"
+        }
+      }
+    },
+    {
       "hdfs-site" : {
         "properties_attributes" : {
           "final" : {
@@ -147,7 +191,7 @@
           }
         },
         "properties" : {
-          "dfs.replication" : "3",
+          "dfs.replication" : "1",
           "dfs.namenode.audit.log.async" : "true",
           "dfs.namenode.checkpoint.dir" : "/hadoop/hdfs/namesecondary",
           "dfs.namenode.avoid.read.stale.datanode" : "true",
@@ -166,7 +210,7 @@
           "dfs.content-summary.limit" : "5000",
           "dfs.http.policy" : "HTTP_ONLY",
           "dfs.journalnode.https-address" : "0.0.0.0:8481",
-          "dfs.datanode.du.reserved" : "7922094592",
+          "dfs.datanode.du.reserved" : "4922094592",
           "dfs.domain.socket.path" : "/var/lib/hadoop-hdfs/dn_socket",
           "dfs.datanode.ipc.address" : "0.0.0.0:8010",
           "dfs.cluster.administrators" : " hdfs",
@@ -207,45 +251,11 @@
       }
     },
     {
-      "ranger-yarn-plugin-properties" : {
-        "properties_attributes" : { },
-        "properties" : { }
-      }
-    },
-    {
-      "ranger-hdfs-audit" : {
-        "properties_attributes" : { },
-        "properties" : {
-          "xasecure.audit.destination.solr.zookeepers" : "{{zookeeper_quorum}}/infra-solr"
-        }
-      }
-    },
-    {
-      "ranger-hdfs-plugin-properties" : {
-        "properties_attributes" : { },
-        "properties" : { }
-      }
-    },
-    {
-      "spark2-thrift-fairscheduler" : {
-        "properties_attributes" : { },
-        "properties" : {
-          "fairscheduler_content" : "<?xml version=\"1.0\"?>\n            <allocations>\n            <pool name=\"default\">\n            <schedulingMode>FAIR</schedulingMode>\n            <weight>1</weight>\n            <minShare>2</minShare>\n            </pool>\n            </allocations>"
-        }
-      }
-    },
-    {
       "hdfs-log4j" : {
         "properties_attributes" : { },
         "properties" : {
           "content" : "\n#\n# Licensed to the Apache Software Foundation (ASF) under one\n# or more contributor license agreements.  See the NOTICE file\n# distributed with this work for additional information\n# regarding copyright ownership.  The ASF licenses this file\n# to you under the Apache License, Version 2.0 (the\n# \"License\"); you may not use this file except in compliance\n# with the License.  You may obtain a copy of the License at\n#\n#  http://www.apache.org/licenses/LICENSE-2.0\n#\n# Unless required by applicable law or agreed to in writing,\n# software distributed under the License is distributed on an\n# \"AS IS\" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY\n# KIND, either express or implied.  See the License for the\n# specific language governing permissions and limitations\n# under the License.\n#\n\n\n# Define some default values that can be overridden by system properties\n# To change daemon root logger use hadoop_root_logger in hadoop-env\nhadoop.root.logger=INFO,console\nhadoop.log.dir=.\nhadoop.log.file=hadoop.log\n\n\n# Define the root logger to the system property \"hadoop.root.logger\".\nlog4j.rootLogger=${hadoop.root.logger}, EventCounter\n\n# Logging Threshold\nlog4j.threshhold=ALL\n\n#\n# Daily Rolling File Appender\n#\n\nlog4j.appender.DRFA=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.DRFA.File=${hadoop.log.dir}/${hadoop.log.file}\n\n# Rollver at midnight\nlog4j.appender.DRFA.DatePattern=.yyyy-MM-dd\n\n# 30-day backup\n#log4j.appender.DRFA.MaxBackupIndex=30\nlog4j.appender.DRFA.layout=org.apache.log4j.PatternLayout\n\n# Pattern format: Date LogLevel LoggerName LogMessage\nlog4j.appender.DRFA.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\n# Debugging Pattern format\n#log4j.appender.DRFA.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n\n\n\n#\n# console\n# Add \"console\" to rootlogger above if you want to use this\n#\n\nlog4j.appender.console=org.apache.log4j.ConsoleAppender\nlog4j.appender.console.target=System.err\nlog4j.appender.console.layout=org.apache.log4j.PatternLayout\nlog4j.appender.console.layout.ConversionPattern=%d{yy/MM/dd HH:mm:ss} %p %c{2}: %m%n\n\n#\n# TaskLog Appender\n#\n\n#Default values\nhadoop.tasklog.taskid=null\nhadoop.tasklog.iscleanup=false\nhadoop.tasklog.noKeepSplits=4\nhadoop.tasklog.totalLogFileSize=100\nhadoop.tasklog.purgeLogSplits=true\nhadoop.tasklog.logsRetainHours=12\n\nlog4j.appender.TLA=org.apache.hadoop.mapred.TaskLogAppender\nlog4j.appender.TLA.taskId=${hadoop.tasklog.taskid}\nlog4j.appender.TLA.isCleanup=${hadoop.tasklog.iscleanup}\nlog4j.appender.TLA.totalLogFileSize=${hadoop.tasklog.totalLogFileSize}\n\nlog4j.appender.TLA.layout=org.apache.log4j.PatternLayout\nlog4j.appender.TLA.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\n\n#\n#Security audit appender\n#\nhadoop.security.logger=INFO,console\nhadoop.security.log.maxfilesize=256MB\nhadoop.security.log.maxbackupindex=20\nlog4j.category.SecurityLogger=${hadoop.security.logger}\nhadoop.security.log.file=SecurityAuth.audit\nlog4j.appender.DRFAS=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.DRFAS.File=${hadoop.log.dir}/${hadoop.security.log.file}\nlog4j.appender.DRFAS.layout=org.apache.log4j.PatternLayout\nlog4j.appender.DRFAS.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\nlog4j.appender.DRFAS.DatePattern=.yyyy-MM-dd\n\nlog4j.appender.RFAS=org.apache.log4j.RollingFileAppender\nlog4j.appender.RFAS.File=${hadoop.log.dir}/${hadoop.security.log.file}\nlog4j.appender.RFAS.layout=org.apache.log4j.PatternLayout\nlog4j.appender.RFAS.layout.ConversionPattern=%d{ISO8601} %p %c: %m%n\nlog4j.appender.RFAS.MaxFileSize=${hadoop.security.log.maxfilesize}\nlog4j.appender.RFAS.MaxBackupIndex=${hadoop.security.log.maxbackupindex}\n\n#\n# hdfs audit logging\n#\nhdfs.audit.logger=INFO,console\nlog4j.logger.org.apache.hadoop.hdfs.server.namenode.FSNamesystem.audit=${hdfs.audit.logger}\nlog4j.additivity.org.apache.hadoop.hdfs.server.namenode.FSNamesystem.audit=false\nlog4j.appender.DRFAAUDIT=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.DRFAAUDIT.File=${hadoop.log.dir}/hdfs-audit.log\nlog4j.appender.DRFAAUDIT.layout=org.apache.log4j.PatternLayout\nlog4j.appender.DRFAAUDIT.layout.ConversionPattern=%d{ISO8601} %p %c{2}: %m%n\nlog4j.appender.DRFAAUDIT.DatePattern=.yyyy-MM-dd\n\n#\n# NameNode metrics logging.\n# The default is to retain two namenode-metrics.log files up to 64MB each.\n#\nnamenode.metrics.logger=INFO,NullAppender\nlog4j.logger.NameNodeMetricsLog=${namenode.metrics.logger}\nlog4j.additivity.NameNodeMetricsLog=false\nlog4j.appender.NNMETRICSRFA=org.apache.log4j.RollingFileAppender\nlog4j.appender.NNMETRICSRFA.File=${hadoop.log.dir}/namenode-metrics.log\nlog4j.appender.NNMETRICSRFA.layout=org.apache.log4j.PatternLayout\nlog4j.appender.NNMETRICSRFA.layout.ConversionPattern=%d{ISO8601} %m%n\nlog4j.appender.NNMETRICSRFA.MaxBackupIndex=1\nlog4j.appender.NNMETRICSRFA.MaxFileSize=64MB\n\n#\n# mapred audit logging\n#\nmapred.audit.logger=INFO,console\nlog4j.logger.org.apache.hadoop.mapred.AuditLogger=${mapred.audit.logger}\nlog4j.additivity.org.apache.hadoop.mapred.AuditLogger=false\nlog4j.appender.MRAUDIT=org.apache.log4j.DailyRollingFileAppender\nlog4j.appender.MRAUDIT.File=${hadoop.log.dir}/mapred-audit.log\nlog4j.appender.MRAUDIT.layout=org.apache.log4j.PatternLayout\nlog4j.appender.MRAUDIT.layout.ConversionPattern=%d{ISO8601} %p %c{2}: %m%n\nlog4j.appender.MRAUDIT.DatePattern=.yyyy-MM-dd\n\n#\n# Rolling File Appender\n#\n\nlog4j.appender.RFA=org.apache.log4j.RollingFileAppender\nlog4j.appender.RFA.File=${hadoop.log.dir}/${hadoop.log.file}\n\n# Logfile size and and 30-day backups\nlog4j.appender.RFA.MaxFileSize=256MB\nlog4j.appender.RFA.MaxBackupIndex=10\n\nlog4j.appender.RFA.layout=org.apache.log4j.PatternLayout\nlog4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} - %m%n\nlog4j.appender.RFA.layout.ConversionPattern=%d{ISO8601} %-5p %c{2} (%F:%M(%L)) - %m%n\n\n\n# Custom Logging levels\n\nhadoop.metrics.log.level=INFO\n#log4j.logger.org.apache.hadoop.mapred.JobTracker=DEBUG\n#log4j.logger.org.apache.hadoop.mapred.TaskTracker=DEBUG\n#log4j.logger.org.apache.hadoop.fs.FSNamesystem=DEBUG\nlog4j.logger.org.apache.hadoop.metrics2=${hadoop.metrics.log.level}\n\n# Jets3t library\nlog4j.logger.org.jets3t.service.impl.rest.httpclient.RestS3Service=ERROR\n\n#\n# Null Appender\n# Trap security logger on the hadoop client side\n#\nlog4j.appender.NullAppender=org.apache.log4j.varia.NullAppender\n\n#\n# Event Counter Appender\n# Sends counts of logging messages at different severity levels to Hadoop Metrics.\n#\nlog4j.appender.EventCounter=org.apache.hadoop.log.metrics.EventCounter\n\n# Removes \"deprecated\" messages\nlog4j.logger.org.apache.hadoop.conf.Configuration.deprecation=WARN\n\n#\n# HDFS block state change log from block manager\n#\n# Uncomment the following to suppress normal block state change\n# messages from BlockManager in NameNode.\n#log4j.logger.BlockStateChange=WARN"
         }
-      }
-    },
-    {
-      "ranger-hdfs-security" : {
-        "properties_attributes" : { },
-        "properties" : { }
       }
     },
     {
@@ -270,7 +280,9 @@
           "keyserver_port" : "",
           "hdfs_user_nproc_limit" : "65536",
           "namenode_opt_maxnewsize" : "128m",
-          "namenode_opt_permsize" : "128m"
+          "namenode_opt_permsize" : "128m",
+          "keyserver_host" : "dn0.dev",
+          "keyserver_port" : "9292"
         }
       }
     },
@@ -292,18 +304,6 @@
         "properties" : {
           "infra_solr_ranger_audit_service_users": "{default_ranger_audit_users},accumulo"
         }
-      }
-    },
-    {
-      "ranger-hive-audit" : {
-        "properties_attributes" : { },
-        "properties" : { }
-      }
-    },
-    {
-      "ranger-hive-security" : {
-        "properties_attributes" : { },
-        "properties" : { }
       }
     },
     {
@@ -333,13 +333,14 @@
         "properties" : {
           "is_solrCloud_enabled" : "true",
           "ranger-hive-plugin-enabled" : "Yes",
+	  "xasecure.audit.destination.solr" : "true",	
           "xasecure.audit.destination.hdfs" : "false",	  
-          "ranger-hdfs-plugin-enabled" : "Yes",
+          "ranger-hdfs-plugin-enabled" : "No",
           "ranger-knox-plugin-enabled" : "No",
           "ranger-yarn-plugin-enabled" : "No",
-          "ranger-hbase-plugin-enabled" : "No",
+          "ranger-hbase-plugin-enabled" : "Yes",
           "ranger-kafka-plugin-enabled" : "No",
-          "ranger-atlas-plugin-enabled" : "No",
+          "ranger-atlas-plugin-enabled" : "Yes",
           "create_db_dbuser" : "false",
           "ranger_admin_password": "admin",
 	  "ranger_privelege_user_jdbc_url": "jdbc:mysql://mysql.dev:3306"
@@ -398,6 +399,102 @@
           "kdc_type": "mit-kdc",
 	  "kdc_hosts": "kdc.dev",
 	  "admin_server_host": "kdc.dev"
+        }
+      }
+    },
+    {
+      "kms-properties" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "DB_FLAVOR" : "MYSQL",
+          "SQL_CONNECTOR_JAR" : "/usr/share/java/mysql-connector-java.jar",
+          "KMS_MASTER_KEY_PASSWD" : "password",
+          "db_host" : "dn0.dev",
+          "db_root_user" : "root",
+          "db_root_password" : "ranger",
+          "db_password" : "rangerkms"
+        }
+      }
+    },
+    {
+      "ranger-hbase-security" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "ranger.plugin.hbase.policy.rest.url": "http://dn0.dev:6080"
+        }
+      }
+    },    
+    {
+      "ranger-hbase-plugin-properties" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "ranger-hbase-plugin-enabled": "Yes"
+        }
+      }
+    },
+    {
+      "ranger-atlas-security" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "ranger.plugin.atlas.policy.rest.url": "http://dn0.dev:6080"
+        }
+      }
+    },    
+    {
+      "ranger-atlas-plugin-properties" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "ranger-atlas-plugin-enabled": "Yes"
+        }
+      }
+    },
+    {
+      "ranger-hdfs-security" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "ranger.plugin.hdfs.policy.rest.url": "http://dn0.dev:6080"
+        }
+      }
+    },    
+    {
+      "ranger-hdfs-plugin-properties" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "ranger-hdfs-plugin-enabled": "Yes"
+        }
+      }
+    },
+    {
+      "ranger-kafka-security" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "ranger.plugin.kafka.policy.rest.url": "http://dn0.dev:6080"
+        }
+      }
+    },    
+    {
+      "ranger-kafka-plugin-properties" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "ranger-kafka-plugin-enabled": "Yes"
+        }
+      }
+    },
+    {
+      "kafka-broker" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "authorizer.class.name": "org.apache.ranger.authorization.kafka.authorizer.RangerKafkaAuthorizer"
+        }
+      }
+    },
+    {
+      "hbase-site" : {
+        "properties_attributes" : { },
+        "properties" : {
+          "hbase.coprocessor.master.classes": "org.apache.ranger.authorization.hbase.RangerAuthorizationCoprocessor",
+	  "hbase.coprocessor.region.classes": "org.apache.hadoop.hbase.security.token.TokenProvider,org.apache.hadoop.hbase.security.access.SecureBulkLoadEndpoint,org.apache.ranger.authorization.hbase.RangerAuthorizationCoprocessor",
+	  "hbase.coprocessor.regionserver.classes": "org.apache.ranger.authorization.hbase.RangerAuthorizationCoprocessor"
         }
       }
     },
@@ -466,28 +563,25 @@
           "name" : "ACCUMULO_TSERVER"
         },
         {
-          "name" : "KNOX_GATEWAY"
+          "name": "KNOX_GATEWAY"
         },
- 	{
-          "name" : "HBASE_MASTER"
+        {
+          "name": "HBASE_REGIONSERVER"
         },
-	{
-          "name" : "HBASE_MASTER"
+        {
+          "name": "HBASE_CLIENT"
         },
-	{
-          "name" : "HBASE_REGIONSERVER"
+        {
+          "name": "HBASE_MASTER"
         },
-	{
-          "name" : "HBASE_CLIENT"
+        {
+          "name": "KAFKA_BROKER"
         },
-	{
-          "name" : "ATLAS_SERVER"
+        {
+          "name": "ATLAS_SERVER"
         },
-	{
-          "name" : "ATLAS_CLIENT"
-        },
-	{
-          "name" : "KAFKA_BROKER"
+        {
+          "name": "ATLAS_CLIENT"
         }
       ],
       "configurations" : [ ],

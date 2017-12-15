@@ -122,7 +122,15 @@
           "io.compression.codecs" : "org.apache.hadoop.io.compress.GzipCodec,org.apache.hadoop.io.compress.DefaultCodec,org.apache.hadoop.io.compress.SnappyCodec",
           "hadoop.proxyuser.hive.groups" : "*",
           "io.serializations" : "org.apache.hadoop.io.serializer.WritableSerialization",
-          "hadoop.user.group.static.mapping.overrides": "doctorbob=doctor;tom=reception;jane=billing"
+	  "hadoop.security.group.mapping" : "org.apache.hadoop.security.LdapGroupsMapping",
+          "hadoop.security.group.mapping.ldap.bind.user" : "uid=admin,ou=people,dc=hadoop,dc=apache,dc=org",
+          "hadoop.security.group.mapping.ldap.bind.password" : "admin-password",
+          "hadoop.security.group.mapping.ldap.url" : "ldap://dn0.dev:33389",
+          "hadoop.security.group.mapping.ldap.base" : "dc=hadoop,dc=apache,dc=org",
+          "hadoop.security.group.mapping.ldap.search.filter.user" : "(&(|(objectclass=person)(objectclass=applicationProcess))(cn={0}))",
+          "hadoop.security.group.mapping.ldap.search.filter.group" : "(objectclass=groupOfNames)",
+          "hadoop.security.group.mapping.ldap.search.attr.member" : "member",
+          "hadoop.security.group.mapping.ldap.search.attr.group.name" : "cn"
         }
       }
     },
@@ -352,6 +360,37 @@
       }
     },
     {
+      "usersync-properties" : {
+        "properties_attributes" : { },
+        "properties" : { }
+      }
+    },
+    {
+      "ranger-ugsync-site": {
+         "properties_attributes": { },
+         "properties" : {
+           "ranger.usersync.ldap.url" : "ldap://dn0.dev:33389",
+           "ranger.usersync.group.searchbase" : "ou=groups,dc=hadoop,dc=apache,dc=org",
+           "ranger.usersync.group.nameattribute" : "cn",
+           "ranger.usersync.ldap.user.nameattribute" : "uid",
+           "ranger.usersync.ldap.searchbase" : "dc=hadoop,dc=apache,dc=org",
+           "ranger.usersync.ldap.user.searchbase" : "ou=people,dc=hadoop,dc=apache,dc=org",
+	   "ranger.usersync.group.memberattributename" : "member",
+           "ranger.usersync.enabled" : "true",
+           "ranger.usersync.ldap.binddn" : "uid=admin,ou=people,dc=hadoop,dc=apache,dc=org",
+           "ranger.usersync.ldap.ldapbindpassword" : "admin-password",
+           "ranger.usersync.ldap.user.objectclass" : "person",
+           "ranger.usersync.source.impl.class" : "org.apache.ranger.ldapusersync.process.LdapUserGroupBuilder",
+           "ranger.usersync.group.searchbase" : "ou=groups,dc=hadoop,dc=apache,dc=org",
+           "ranger.usersync.group.searchfilter" : "cn=*",
+           "ranger.usersync.ldap.user.searchfilter" : "uid=*",
+           "ranger.usersync.group.searchenabled" : "true",
+           "ranger.usersync.group.objectclass" : "groupofnames",
+           "ranger.usersync.ldap.deltasync" : "false"
+         }
+       }
+    },
+    {
       "kerberos-env" : {
         "properties_attributes" : { },
         "properties" : {
@@ -425,6 +464,30 @@
         },
         {
           "name" : "ACCUMULO_TSERVER"
+        },
+        {
+          "name" : "KNOX_GATEWAY"
+        },
+ 	{
+          "name" : "HBASE_MASTER"
+        },
+	{
+          "name" : "HBASE_MASTER"
+        },
+	{
+          "name" : "HBASE_REGIONSERVER"
+        },
+	{
+          "name" : "HBASE_CLIENT"
+        },
+	{
+          "name" : "ATLAS_SERVER"
+        },
+	{
+          "name" : "ATLAS_CLIENT"
+        },
+	{
+          "name" : "KAFKA_BROKER"
         }
       ],
       "configurations" : [ ],

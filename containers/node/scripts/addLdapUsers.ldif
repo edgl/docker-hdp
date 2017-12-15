@@ -1,0 +1,48 @@
+dn: uid=doctorbob,ou=people,dc=hadoop,dc=apache,dc=org
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+cn: doctorbob
+sn: doctorbob
+uid: doctorbob
+userPassword:password
+
+dn: uid=jane,ou=people,dc=hadoop,dc=apache,dc=org
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+cn: tom
+sn: tom
+uid: tom
+userPassword:password
+
+dn: uid=accumulo,ou=people,dc=hadoop,dc=apache,dc=org
+objectclass:top
+objectclass:person
+objectclass:organizationalPerson
+objectclass:inetOrgPerson
+cn: accumulo
+sn: accumulo
+uid: accumulo
+userPassword:password
+
+# create the researcher group under groups
+dn: cn=researcher,ou=groups,dc=hadoop,dc=apache,dc=org
+objectclass:top
+objectclass: groupofnames
+cn: scientist
+description: scientist group
+member: uid=doctorbob,ou=people,dc=hadoop,dc=apache,dc=org
+
+# create the hadoop group under groups
+dn: cn=hadoop,ou=groups,dc=hadoop,dc=apache,dc=org
+objectclass:top
+objectclass: groupofnames
+cn: hadoop
+description: scientist group
+member: uid=doctorbob,ou=people,dc=hadoop,dc=apache,dc=org
+member: uid=tom,ou=people,dc=hadoop,dc=apache,dc=org
+member: uid=accumulo,ou=people,dc=hadoop,dc=apache,dc=org
+member: uid=sam,ou=people,dc=hadoop,dc=apache,dc=org

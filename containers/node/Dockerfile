@@ -12,6 +12,7 @@ RUN yum install -y ranger*
 RUN yum install -y accumulo*
 RUN yum install -y superset*
 RUN yum install -y ambari-infra-solr*
+RUN yum install -y knox*
 RUN cp -r /usr/hdp/current/hadoop-client/lib/ranger-hdfs-plugin-impl /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl
 RUN rm -f /usr/hdp/current/accumulo-client/lib/ranger-accumulo-plugin-impl/ranger-hdfs-plugin*
 
@@ -21,6 +22,7 @@ mkdir -p /usr/share/java && \
 mv ./mysql-connector-java-5.1.44/mysql-connector-java-5.1.44-bin.jar /usr/share/java/mysql-connector-java.jar && \
 rm -f mysql-connector-java-5.1.44.tar.gz
 RUN yum install -y lzo snappy-devel rpcbind
+RUN yum install -y openldap-clients
 RUN rm /etc/yum.repos.d/hdp*.repo
 ADD conf/* /etc/accumulo/conf/
 RUN mkdir -p /etc/ranger/dev_accumulo/policycache && \
@@ -29,6 +31,8 @@ mv /etc/accumulo/conf/tserver_dev_accumulo.json /etc/ranger/dev_accumulo/policyc
 chown -R accumulo:hadoop /etc/ranger/dev_accumulo
 ADD scripts/addUsers.sh /root/
 ADD scripts/start.sh /start.sh
+ADD scripts/addLdapUsers.sh /root/
+ADD scripts/addLdapUsers.ldif /root/
 RUN ln -s /etc/hadoop/conf/core-site.xml /etc/accumulo/conf/core-site.xml && \
 mkdir /var/lib/accumulo && \
 chown accumulo:hadoop /var/lib/accumulo

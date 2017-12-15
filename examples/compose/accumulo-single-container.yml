@@ -70,6 +70,8 @@ services:
      - "50030:50030"
      # Solr
      - "8983:8983"
+     - "21000:21000"
+     - "33389:33389"
   kdc.dev:
     build: ../../../docker-kerberos/kdc-kadmin
     volumes:
@@ -79,6 +81,8 @@ services:
      - dev
     hostname: kdc
     domainname: dev
+    ports:
+     - "88:88"
 networks:
   dev:
     driver: bridge
